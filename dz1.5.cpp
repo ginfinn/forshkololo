@@ -17,6 +17,10 @@ int main() {
     cin >> lamp;
 
 
-
     if (lamp == 1 || (curtains == 0 && time >= 900 && time < 2000)) {
         cout << "светло";
+    }else
+        cout << "темно"
+                ;
+
+}
