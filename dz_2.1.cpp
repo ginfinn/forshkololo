@@ -1,16 +1,21 @@
-#include <math.h>
 #include <iostream>
+#include <math.h>
 
 using namespace std;
-
-int main() {
-    double x, a;
-    cin >> a;
-    cin >> x;
-    if  (a - pow(x, 2)>0){
-        cout << "w=" << (abs(x) < 1 ? a * log(abs(x)) : sqrt(a - pow(x, 2)));
-    }else{
-        cout<<"функция не определена при"<<"x="<<(x)<<"и"<<"a="<<(a);
-    }
-
+int main()
+{
+	setlocale(0, "");
+	double x, a, w;
+	cout << "Введите x: ";
+	cin >> x;
+	cout << "Введите a: ";
+	cin >> a;
+	x = fabs(x);
+	if (x < 1)
+		w = a*log(x);
+	else
+		w = sqrt(a - x*x);
+	cout << "w=" << w << endl;
+	system("pause");
+	return 0;
 }
