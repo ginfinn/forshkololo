@@ -1,4 +1,6 @@
-void resheto()
+#include <iostream>
+using namespace std;
+int main()
 {
 	int n;
 	int k = 1;
