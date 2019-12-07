@@ -25,10 +25,10 @@ void main()
 	int m = 37;
 	int i = 3;
 	int c = 64;
-	int s = 0;
-	for (int k = 0; k < 20; ++k)
+	int s =0;
+	for(int k =0 ; k<20 ;++k)
 	{
-		s = (m * s + i) % c;
-		cout << s << " ";
+		s = (m*s+i) % c;
+		cout<< s<<" ";
 	}
 	}
