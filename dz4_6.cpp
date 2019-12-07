@@ -22,54 +22,72 @@ using namespace std;
 
 void main()
 {
-	bool minus = false;
-	int number, sum, col;
+	int number,sum,col;
 	sum = 0;
 	col = 0;
 	string input;
-	cout << "rome input I-1 V-5 X-10 L-50 C-100 D-500 M-1000" << endl;
-	cin >> input;
+	cout<<"rome input I-1 V-5 X-10 L-50 C-100 D-500 M-1000"<<endl;
+	cin>>input;
 	number = input.length();
-	for (int i = 0; i <= number; ++i)
+	for(int i = 0;i<=number;++i)
 	{
-
-		if (input[i] == '-') { minus = true; }
-		if (input[i] == 'I')
+		if(input[i]=='I')
 		{
-			sum = sum + 1;
+			if (input[i+1] != 'I')
+				sum= sum-1;
+			else
+				sum= sum+1;
 			col++;
 		}
-		if (input[i] == 'V')
+		if(input[i]=='V')
 		{
-			sum = sum + 5;
+			if (input[i+1] != 'V' || input[i+1] != 'I')
+				sum= sum-5;
+			else
+				sum= sum+5;
 			col++;
 		}
-		if (input[i] == 'X')
+		if(input[i]=='X')
 		{
-			sum = sum + 10;
+			if (input[i+1] != 'V' || input[i+1] != 'I' || input[i+1] != 'X')
+				sum= sum-10;
+			else
+				sum= sum+10;
 			col++;
 		}
-		if (input[i] == 'L')
+		if(input[i]=='L')
 		{
-			sum = sum + 50;
+			if (input[i+1] != 'V' || input[i+1] != 'I' || input[i+1] != 'X' || input[i+1] != 'L')
+				sum= sum-50;
+			else
+				sum= sum+50;
 			col++;
 		}
-		if (input[i] == 'C')
+		if(input[i]=='C')
 		{
-			sum = sum + 100;
+			if (input[i+1] != 'V' || input[i+1] != 'I' || input[i+1] != 'X' || input[i+1] != 'L'\
+			|| input[i+1] != 'C')
+				sum= sum-100;
+			else
+				sum= sum+100;
 			col++;
 		}
-		if (input[i] == 'D')
+		if(input[i]=='D')
 		{
-			sum = sum + 500;
+			if (input[i+1] != 'M')
+				sum= sum+500;
+			else
+				sum= sum-500;
 			col++;
 		}
-		if (input[i] == 'M')
+		if(input[i]=='M')
 		{
-			sum = sum + 1000;
+				sum= sum+1000;
 			col++;
 		}
+		else
+			cout<<"error"<<endl;
 	}
-	if (col == number) { cout << sum; }
-	else cout << sum << "something input noncorect";
+	if(col==number ){cout<<sum;}
+	else cout<<sum<<"something input noncorect";
 	}
