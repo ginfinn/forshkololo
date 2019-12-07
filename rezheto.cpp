@@ -3,30 +3,18 @@ using namespace std;
 int main()
 {
 	int n;
-	int k = 1;
-	int A[1000000];
-	cin>>n;
-	for(long long i = 2;i < n; i++)
+	cout << "input n " << endl;
+	cin >> n;
+	int* a = new int[n + 1];
+	for (int i = 0; i < n + 1; i++)
+		a[i] = i;
+	for (int p = 2; p < n + 1; p++)
 	{
-		for(long long j = i * i; j < n; j += i)
+		if (a[p] != 0)
 		{
-			if (j > n)
-				break;
-			A[j] = 1;
+			cout << a[p] << endl;
+			for (int j = p * p; j < n + 1; j += p)
+				a[j] = 0;
 		}
 	}
-	for(int i = 2; i < n ; i++)
-	{
-		if (A[i] == 0)
-		{
-			cout << i << "\t";
-			k++;
-		}
-		if (k % 11 == 0)
-		{
-			cout<<endl;
-			k=1;
-		}
-	}
-	cout<<endl;
 }
