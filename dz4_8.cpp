@@ -1,119 +1,126 @@
-#include <cstdlib>
-#include<iostream>
-#include <cmath>
-#include <vector>
-//#include "stdafx.h"
-#include <random>
-#include <fstream>
-#include <string>
-#include <algorithm>
-#include <stdlib.h>
-
-#include <cstdio>
-#include <windows.h>
-//#include <dos.h>
-//#include<graphics.h>
+#include <iostream>
 using namespace std;
 
-#define PI 3.14
-
-using namespace std;
-
-
-void main()
+void max(float x0, float x1, float x2) //поиск макс ф-ции
 {
-	int row1, row2, col1, col2;
-	double** a, ** b, ** c;
-	system("chcp 1251");
-	system("cls");
-	cout << "Введите количество строк первой матрицы: ";
-	cin >> row1;
-	cout << "Введите количество столбцов первой матрицы: ";
-	cin >> col1;
-	cout << "Введите количество строк второй матрицы: ";
-	cin >> row2;
-	cout << "Введите количество столбцов второй матрицы: ";
-	cin >> col2;
-	if (col1 != row2)
-	{
-		cout << "Умножение невозможно!";
-		cin.get(); cin.get();
-		return;
-	}
-	// Ввод элементов первой матрицы
-	a = new double* [row1];
-	cout << "Введите элементы первой матрицы" << endl;
-	for (int i = 0; i < row1; i++)
-	{
-		a[i] = new double[col1];
-		for (int j = 0; j < col1; j++)
-		{
-			cout << "a[" << i << "][" << j << "]= ";
-			cin >> a[i][j];
-		}
-	}
-	// Вывод элементов первой матрицы
-	cout << "первая матрица" << endl;
-	for (int i = 0; i < row1; i++)
-	{
-		for (int j = 0; j < col1; j++)
-		{
-			if (a[i][j] < 0)
-				cout << a[i][j] << "\t";
-			else
-				cout << " " << a[i][j] << "\t";
-		}
-		cout << endl;
-	}
-	// Ввод элементов второй матрицы
-	b = new double* [row2];
-	cout << "Введите элементы второй матрицы" << endl;
-	for (int i = 0; i < row2; i++)
-	{
-		b[i] = new double[col2];
-		for (int j = 0; j < col2; j++)
-		{
-			cout << "b[" << i << "][" << j << "]= ";
-			cin >> b[i][j];
-		}
-	}
-	// Вывод элементов второй матрицы
-	cout << "вторая матрица" << endl;
-	for (int i = 0; i < row2; i++)
-	{
-		for (int j = 0; j < col2; j++)
-		{
-			if (b[i][j] < 0)
-				cout << b[i][j] << "\t";
-			else
-				cout << " " << b[i][j] << "\t";
-		}
-		cout << endl;
-	}
-
-// Умножение матриц
-c = new double* [row1];
-for (int i = 0; i < row1; i++)
-{
-	c[i] = new double[col2];
-	for (int j = 0; j < col2; j++)
-	{
-		c[i][j] = 0;
-		for (int k = 0; k < col1; k++)
-			c[i][j] += a[i][k] * b[k][j];
-	}
+	if (x0 > x1 && x0 > x2)
+		cout << 1;
+	else if (x0<x1 && x1>x2)
+		cout << 2;
+	else if (x0 < x2 && x1 < x2)
+		cout << 3;
+	else if (x0 == x1 && x1 > x2)
+		cout << "1 and 2";
+	else if (x0 < x1 && x1 == x2)
+		cout << "2 and 3";
+	else if (x0 == x2 && x1 < x2)
+		cout << "1 and 3";
+	else if (x0 == x1 && x1 == x2)
+		cout << "1 and 2 and 3";
 }
-// Вывод матрицы произведения
-cout << "Матрица произведения" << endl;
-for (int i = 0; i < row1; i++)
+
+void min(float x0, float x1, float x2)//поиск мин
 {
-	for (int j = 0; j < col2; j++)
-		if (c[i][j] < 0)
-			cout << c[i][j] << "\t";
-		else
-			cout << " " << c[i][j] << "\t";
+	if (x0 < x1 && x0 < x2)
+		cout << 1;
+	else if (x0 > x1 && x1 < x2)
+		cout << 2;
+	else if (x0 > x2 && x1 > x2)
+		cout << 3;
+	else if (x0 == x1 && x1 < x2)
+		cout << "1 and 2";
+	else if (x0 > x1 && x1 == x2)
+		cout << "2 and 3";
+	else if (x0 == x2 && x1 > x2)
+		cout << "1 and 3";
+	else if (x0 == x1 && x1 == x2)
+		cout << "1 and 2 and 3";
+}
+
+int main()
+{
+	float max;
+	float min;
+	float max1;
+	float min1;
+	setlocale(LC_ALL, "Rus");
+	float A[3][4], B[4][2], C[3][2]; //столбцы и строки
+	int i, j, k;
+	for (i = 0; i < 3; i++) //делаем матрицу
+	{
+		for (j = 0; j < 2; j++)
+		{
+			C[i][j] = 0;
+		}
+	}
+	for (i = 0; i < 3; i++)
+	{
+		cout << endl << "введите количество для продавца " << i + 1 << ": "; //заполняем матрицу
+		for (j = 0; j < 4; j++)
+		{
+			cin >> A[i][j];
+		}
+	}
+	for (i = 0; i < 4; i++)
+	{
+		cout << endl << "введите цену и комиссию за товар " << i + 1 << ": ";
+		cin >> B[i][0] >> B[i][1];
+	}
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 4; j++)
+		{
+			for (k = 0; k < 2; k++)
+			{
+				C[i][k] += A[i][j] * B[j][k];
+			}
+		}
+	}
+	for (int i = 0; i <= 1;i++) {
+		if (C[i + 1][0] < C[i][0]) {
+			max = C[i][0];
+		}
+		else {
+			max = C[i+1][0];
+		}
+	}
+	for (int i = 0; i <= 1; i++) {
+		if (C[i + 1][0] < C[i][0]) {
+			min = C[i+1][0];
+		}
+		else {
+			min = C[i][0];
+		}
+	}
+	for (int i = 0; i <= 1; i++) {
+		if (C[i + 1][1] < C[i][1]) {
+			max1 = C[i][1];
+		}
+		else {
+			max1 = C[i + 1][1];
+		}
+	}
+	for (int i = 0; i <= 1; i++) {
+		if (C[i + 1][1] < C[i][1]) {
+			min1 = C[i + 1][1];
+		}
+		else {
+			min1 = C[i][1];
+		}
+	}
+	//max(C[0][0], C[1][0], C[2][0]);
+	cout << endl << "Максимальные деньги полученные продавцом " <<max << endl;
+	//max(C[0][0], C[1][0], C[2][0]);
 	cout << endl;
-}
-cin.get(); cin.get();
-return;
-}
+	//min(C[0][0], C[1][0], C[2][0]);
+	cout << "Минимальные деньги полученные продавцом " <<min << endl;
+	//min(C[0][0], C[1][0], C[2][0]);
+	//max(C[0][1], C[1][1], C[2][1]);
+	cout << "максимальные комиссионные деньги полученные продавцом " <<max1 <<endl;
+	//max(C[0][1], C[1][1], C[2][1]);
+	//min(C[0][1], C[1][1], C[2][1]);
+	cout << "минимальные комиссионные деньги полученные продавцом " <<min1 <<endl;
+	//min(C[0][1], C[1][1], C[2][1]);
+	cout << "сумма = " << C[0][0] + C[1][0] + C[2][0] << endl;
+	cout << " обшая сумма = " << C[0][0] + C[1][0] + C[2][0] + C[0][1] + C[1][1] + C[2][1] << endl;
+	cout << "сумма комиссионных = " << C[0][1] + C[1][1] + C[2][1];
