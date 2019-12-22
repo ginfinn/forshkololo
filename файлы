@@ -1,0 +1,54 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "Rus");
+
+	string str;
+	string buf;
+	ifstream fin;
+	ofstream fout;
+
+	//ОТКРЫТИЕ ФАЙЛА НА ЗАПИСЬ И ВВОД В НЕГО ТЕКСТА
+	fout.open("text.txt");
+	fout << "Обработка текстового файла"<<"\r\n";
+	fout << "Обработка Текстового файла"<<"\r\n";
+	fout << "ОБРАБОТКА ТЕКСТОВОГО ФАЙЛА";
+	fout.close();
+
+	//ОТКРЫТИЕ ФАЙЛА НА ЧТЕНИЕ ДЛЯ ЗАПИСИ СОДЕРЖИМОГО В СТРОКУ И ВЫВОД СТРОКИ ИЗ ФАЙЛА ДО ИЗМЕНЕНИЯ НА ЭКРАН
+	fin.open("text.txt");
+	cout << "Файл до изменения" << endl;
+	while (!fin.eof()) {
+		getline(fin, buf);
+		str += buf;
+		cout << str << endl;
+	}
+	fin.close();
+
+	cout << endl << "Файл после изменения" << endl;
+	fin.open("text.txt");
+	fout.open("text_posle.txt");
+	while (getline(fin, str)) {
+		//ИЗМЕНЕНИЕ СТРОКИ(ВСТАВКА ЗАПЯТЫХ И ПРОБЕЛОВ ВМЕСТО ПРОБЕЛОВ)
+		for (string::size_type i = 0; i < str.size(); ++i) {
+			if (str[i] == ' ' && (str[i + 1] >= 'А' && str[i + 1] <= 'Я')) {
+				str.insert(i, ".");
+				i++;
+			}
+			else if (str[i] == ' ') {
+				str.insert(i, ",");
+				i++;
+			}
+		}
+		fout << str << endl;
+		cout << str << endl;
+	}
+	fout.close();
+	fin.close();
+
+	system("pause");
+}
