@@ -1,34 +1,20 @@
-#include <cstdlib>
-#include<iostream>
-#include <cmath>
-#include <vector>
-//#include "stdafx.h"
-#include <random>
-#include <fstream>
-#include <string>
-#include <algorithm>
-#include <stdlib.h>
-
-#include <cstdio>
-#include <windows.h>
-//#include <dos.h>
-//#include<graphics.h>
-using namespace std;
-
-#define PI 3.14
-
+include<iostream>
+#include<time.h>
 using namespace std;
 
 
-void main()
+int main()
 {
-	int m = 37;
-	int i = 3;
-	int c = 64;
-	int s =0;
-	for(int k =0 ; k<20 ;++k)
-	{
-		s = (m*s+i) % c;
-		cout<< s<<" ";
-	}
-	}
+setlocale(LC_ALL, "Ru");
+srand(time(0));
+int si, m, i, c;
+cout « "Введите m, i, c : ";
+cin » m » i » c;
+si = rand() % c;
+for (int j = 0; j < i; j++)
+{
+si = (si * m + i) % c;
+}
+cout « si;
+
+}
