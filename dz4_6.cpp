@@ -1,93 +1,32 @@
-#include <cstdlib>
-#include<iostream>
-#include <cmath>
-#include <vector>
-//#include "stdafx.h"
-#include <random>
-#include <fstream>
-#include <string>
-#include <algorithm>
-#include <stdlib.h>
-
-#include <cstdio>
-#include <windows.h>
-//#include <dos.h>
-//#include<graphics.h>
 using namespace std;
 
-#define PI 3.14
-
-using namespace std;
-
-
-void main()
+int main()
 {
-	int number,sum,col;
-	sum = 0;
-	col = 0;
-	string input;
-	cout<<"rome input I-1 V-5 X-10 L-50 C-100 D-500 M-1000"<<endl;
-	cin>>input;
-	number = input.length();
-	for(int i = 0;i<=number;++i)
-	{
-		if(input[i]=='I')
-		{
-			if (input[i+1] != 'I')
-				sum= sum-1;
-			else
-				sum= sum+1;
-			col++;
-		}
-		if(input[i]=='V')
-		{
-			if (input[i+1] != 'V' || input[i+1] != 'I')
-				sum= sum-5;
-			else
-				sum= sum+5;
-			col++;
-		}
-		if(input[i]=='X')
-		{
-			if (input[i+1] != 'V' || input[i+1] != 'I' || input[i+1] != 'X')
-				sum= sum-10;
-			else
-				sum= sum+10;
-			col++;
-		}
-		if(input[i]=='L')
-		{
-			if (input[i+1] != 'V' || input[i+1] != 'I' || input[i+1] != 'X' || input[i+1] != 'L')
-				sum= sum-50;
-			else
-				sum= sum+50;
-			col++;
-		}
-		if(input[i]=='C')
-		{
-			if (input[i+1] != 'V' || input[i+1] != 'I' || input[i+1] != 'X' || input[i+1] != 'L'\
-			|| input[i+1] != 'C')
-				sum= sum-100;
-			else
-				sum= sum+100;
-			col++;
-		}
-		if(input[i]=='D')
-		{
-			if (input[i+1] != 'M')
-				sum= sum+500;
-			else
-				sum= sum-500;
-			col++;
-		}
-		if(input[i]=='M')
-		{
-				sum= sum+1000;
-			col++;
-		}
-		else
-			cout<<"error"<<endl;
-	}
-	if(col==number ){cout<<sum;}
-	else cout<<sum<<"something input noncorect";
-	}
+setlocale(LC_ALL, "Ru");
+int a[10], i, sum;
+string str;
+sum = 0;
+cout « "Введите римское число -> " « endl;
+cin » str;
+for (i = 0; i <= str.size() - 1; i++)
+{
+if (str[i] == 'I') { a[i] = 1; }
+if (str[i] == 'V') { a[i] = 5; }
+if (str[i] == 'X') { a[i] = 10; }
+if (str[i] == 'L') { a[i] = 50; }
+if (str[i] == 'c') { a[i] = 100; }
+if (str[i] == 'D') { a[i] = 500; }
+if (str[i] == 'M') { a[i] = 1000; }
+}
+for (i = 0; i <= str.size() - 2; i++)
+{
+if (a[i] < a[i + 1])
+{
+a[i] = -a[i];
+}
+sum = sum + a[i];
+}
+sum = sum + a[str.size() - 1];
+cout « "кол-во твоих оплеух = " « sum;
+return 0;
+}
