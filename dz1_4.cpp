@@ -3,17 +3,17 @@
 using  namespace std;
 int main()
 {
-	int a, b, c,x1,x2;
-	cin >> a;
-	cin >> b;
-	cin >> c;
-	int D = pow(b, 2) - (4 * a * c);
-	if (D >= 0 && a != 0) {
-		x1 = (-b + sqrt(D)) / (2 * a);
-		x2 = (-b - sqrt(D)) / (2 * a);
-		cout << x1 << endl << x2;
-	}
-	if (D < 0) {
-		cout << "net resh";
-	}
+	double a,b,c;
+if(a==0&&b==0&&c==0){
+cout<<"бесконечое множестворешений";
+	
+}else if(a==0&&b==0){
+cout<<"нет решений";
+}else if((pow(b,2)-(4*a*c))<0){
+	cout<<"нет решений";
+}else if((pow(b,2)-(4*a*c))==0){
+cout<<"x="<<b*-1/(2*a);
+}else{
+cout<<"x="<<(b*-1+sqrt(pow(b,2)-(4*a*c)/(2*a)))<<","<<(b*-1-sqrt(pow(b,2)-(4*a*c)/(2*a)));
+}
 }
