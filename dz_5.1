@@ -1,0 +1,68 @@
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <unordered_map>
+#include <string> 
+
+using namespace std;
+
+int LIMIT = 100;
+
+int random(int min, int max) {
+	return min + rand() % (max + 1 - min);
+}
+
+class Point {
+public:
+	int x, y;
+	Point(int x, int y) {
+		this->x = x;
+		this->y = y;
+	}
+};
+
+int main()
+{
+	cout << "m=";
+	int m;
+	cin >> m;
+	cout << "n=";
+	int n;
+	cin >> n;
+
+	ofstream matrixes;
+	ofstream result;
+
+	matrixes.open("matrixes.txt");
+
+	for (int c = 0; c < 10; c++) {
+		matrixes << "Matrix #" << c + 1 << endl;
+		unordered_map<int, vector<Point>> values;
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				int value = random(0, LIMIT);
+				vector<Point> cur_values = values[value];
+				cur_values.push_back(Point(i, j));
+				values[value] = cur_values;
+				matrixes << value << " ";
+			}
+			matrixes << endl;
+		}
+		matrixes << endl << endl;
+
+		result.open("result" + to_string(c + 1) + ".txt");
+		for (auto& it : values) {
+			if (it.second.size() > 1) {
+				result << "Coords for value = " << it.first << ":" << endl;
+				for (size_t i = 0; i < it.second.size(); i++) {
+					result << it.second[i].x << " " << it.second[i].y << endl;
+				}
+				result << endl;
+			}
+		}
+		result.close();
+	}
+
+	matrixes.close();
+
+}
