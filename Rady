@@ -1,41 +1,23 @@
-// Ряды (про4х знач числа, нет двух одинаковых).cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//Получить все четырехзначные целые числа, в записи которых нет двух
-//одинаковых цифр
+#include <iostream>
+#include <string> 
 
-#include<iostream>
-#include<math.h>
 using namespace std;
 
 int main()
 {
- int f = 0, i = 0, x, z, k = 0;
- int mas[10];
- for (x = 1000; x <= 9999; x++)
- {
-  for (i = 0; i < 10; i++)
-   mas[i] = 0;
-  z = x;
-  while (z)
-  {
-   mas[z % 10]++;
-   z /= 10;
-  }
-  for (i = 0; i < 10; i++)
-   if (mas[i] > 1)
-    break;
-  if (i == 10)
-  {
-   cout « x « " ";
-   k++;
-   if (k % 15 == 0)
-    cout « endl;
-   if (k % 500 == 0)
-    cin.get();
-
-  }
- }
-
- cin.get();
-
- return 0;
+	for (int i1 = 1; i1 <= 9; i1++) {
+		for (int i2 = 0; i2 <= 9; i2++) {
+			if (i1 != i2) {
+				for (int i3 = 0; i3 <= 9; i3++) {
+					if (i1 != i3 && i2 != i3) {
+						for (int i4 = 0; i4 <= 9; i4++) {
+							if (i1 != i4 && i2 != i4 && i3 != i4) {
+								cout << to_string(i1) << to_string(i2) << to_string(i3) << to_string(i4) << endl;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
