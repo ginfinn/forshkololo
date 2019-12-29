@@ -13,6 +13,7 @@ int main()
 						for (int i4 = 0; i4 <= 9; i4++) {
 							if (i1 != i4 && i2 != i4 && i3 != i4) {
 								cout << to_string(i1) << to_string(i2) << to_string(i3) << to_string(i4) << endl;
+								cout << "-" << to_string(i1) << to_string(i2) << to_string(i3) << to_string(i4) << endl;
 							}
 						}
 					}
