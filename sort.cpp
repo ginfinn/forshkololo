@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector> 
+#include <iterator>
 
 using namespace std;
 
@@ -32,14 +33,22 @@ vector<int> sort(vector<int> a) {
 
 int main()
 {
+	vector<int> b;
 	vector<int> a;
 	a.push_back(10);
 	a.push_back(30);
 	a.push_back(0);
-	a.push_back(4);
+	a.push_back(6);
 	a.push_back(5);
 	a.push_back(113);
 	a.push_back(4);
 	a.push_back(-5);
-	cout << sort(a)[0];
+	a.push_back(3);
+	a.push_back(-1);
+	
+	for (int i = 0; i < 10; i++) {
+
+		cout << sort(a)[i]<<endl;
+		 b = a;}
+	//}std::copy(b.begin(), b.end(), std::ostream_iterator<int>(std::cout, " "));
 };
