@@ -1,0 +1,18 @@
+public class ginfin {
+    public static void f(int n) {
+        if (n > 0) {
+            g(n-1);
+        }
+    }
+    public static void g(int n) {
+        System.out.println("*");
+        if (n > 1) {
+            System.out.println("*");
+            f(n-2);
+        }
+    }
+
+    public static void main(String[] args) {
+        f(13);
+    }
+}
