@@ -1,0 +1,16 @@
+public class ginfin {
+    public static void main(String[] args) {
+        f(7) ;
+    }
+    private static void f(int n) {
+
+
+        System.out.println("*");
+        if(n>0){
+            System.out.println("*");
+            f(n-2);
+            f((int) Math.floor(((double)n)/2));
+        }
+    }
+
+}
