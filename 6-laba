@@ -1,0 +1,50 @@
+import java.io.File
+import java.nio.charset.Charset
+import java.nio.charset.StandardCharsets
+import kotlin.math.floor
+import kotlin.random.Random
+import kotlin.system.measureTimeMillis
+
+fun main(args: Array<String>) {
+    arrayListOf(
+            File("./invisible-acaemics.txt").readText(charset = Charset.forName("windows-1251")) to "Спасибо",
+            File("./war and world.txt").readText() to "Государственное",
+            File("./pratchett_gorodskaya-strazha.txt").readText(charset = Charset.forName("windows-1251")) to "Annotation"
+    ).forEachIndexed { index, pair ->
+        println("Файл $index, строка '${pair.second}' найдена. || ${DirectSearch(pair.first, pair.second)}")
+    }
+}
+
+fun DirectSearch(string: String, substring: String): Int {
+    var res = -1;
+    var comp = 0;
+    var move = 0;
+    val sl = string.length
+    val ssl = substring.length
+    if (sl == 0)
+        println("Неверно задана строка")
+    else if (ssl == 0)
+        println("Неверно задана подстрока")
+    else {
+        var i = 0;
+        while (i < sl - ssl + 1) {
+            var j = 0
+            while (j < ssl) {
+                comp++
+                if (substring[j] != string[i + j])
+                    break;
+                else if (j == ssl - 1) {
+                    res = i;
+                    return comp + move;
+//                    break;
+                }
+                move++
+                j++
+            }
+            move++
+            i++;
+        }
+    }
+    //return res;
+    return comp + move;
+}
