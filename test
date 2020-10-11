@@ -1,0 +1,56 @@
+public class BinaryTree : IEnumerable
+    where T : IComparable
+{
+    private  BinaryTreeNode _head;
+    private int _count;
+ 
+    public void Add(T value)
+    {
+        throw new NotImplementedException();
+    }
+ 
+    public bool Contains(T value)
+    {
+        throw new NotImplementedException();
+    }
+ 
+    public bool Remove(T value)
+    {
+        throw new NotImplementedException();
+    }
+ 
+    public void PreOrderTraversal(Action action)
+    {
+        throw new NotImplementedException();
+    }
+ 
+    public void PostOrderTraversal(Action action)
+    {
+        throw new NotImplementedException();
+    }
+ 
+    public void InOrderTraversal(Action action)
+    {
+        throw new NotImplementedException();
+    }
+ 
+    public IEnumerator GetEnumerator()
+    {
+        throw new NotImplementedException();
+    }
+ 
+    System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+    {
+        throw new NotImplementedException();
+    }
+ 
+    public void Clear()
+    {
+        throw new NotImplementedException();
+    }
+ 
+    public int Count
+    {
+        get;
+    }
+}
